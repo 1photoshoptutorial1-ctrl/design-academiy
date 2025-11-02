@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Academy</title>
+  <link rel="icon" href="Untitled-5.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #f0fff0, #e0f7ff);
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* 🔥 Navigatsiya paneli */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      width: 120px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      margin: 0 15px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #33cc00;
+    }
+
+    /* 🎉 Sarlavha */
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #33ff00; }
+      to { text-shadow: 0 0 25px #00ff99; }
+    }
+
+    /* 📚 Dars kartalari */
+    .course-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 20px 40px;
+      justify-items: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: 0.3s;
+      cursor: pointer;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,255,100,0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card p {
+      padding: 15px;
+      font-weight: 600;
+      background: #33ff99;
+      color: #000;
+      border-top: 3px solid #00cc66;
+    }
+
+    /* 📱 Responsivlik */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        margin-top: 10px;
+      }
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔝 Navigatsiya -->
+  <header>
+    <img src="Untitled-9.png" alt="Design Academy logo">
+    <nav>
+      <a href="kurs haqida.html">Kurs haqida</a>
+      <a href="https://t.me/ishonchlidizayn">Bog‘lanish</a>
+      <a href="https://t.me/ishonchlidizayn" target="_blank">Koordinator</a>
+    </nav>
+  </header>
+
+  <!-- 🎇 Salomlashuv -->
+  <h1 id="welcomeText">Salom, Foydalanuvchi! 🎉</h1>
+
+  <!-- 📚 Kurslar -->
+  <div class="course-container">
+    <a href="index1canva.html" class="card">
+      <img src="canva_2025_05_27.png" alt="Canva">
+      <p>Canva</p>
+    </a>
+
+    <a href="Figma.html" class="card">
+      <img src="figma_2025_05_27.png" alt="Figma">
+      <p>Figma</p>
+    </a>
+
+    <a href="Magic Voxel.html" class="card">
+      <img src="magic_2025_07_08.png" alt="Magic Voxel">
+      <p>Magic Voxel</p>
+    </a>
+
+    <a href="Photoshop.html" class="card">
+      <img src="photo_2025_07_08.png" alt="Photoshop">
+      <p>Photoshop</p>
+    </a>
+
+    <a href="illustrator.html" class="card">
+      <img src="illus_2025_07_08.png" alt="Illustrator">
+      <p>Illustrator</p>
+    </a>
+
+    <a href="Blender.html" class="card">
+      <img src="blend_2025_07_08.png" alt="Blender">
+      <p>Blender</p>
+    </a>
+  </div>
+  <!-- 🎊 Konfetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const fullname = localStorage.getItem('loggedUser') || "Foydalanuvchi";
+    document.getElementById("welcomeText").textContent = "Salom, " + fullname + "! 🎉";
+    confetti({
+      particleCount: 300,
+      spread: 120,
+      startVelocity: 50,
+      origin: { y: 0.3 }
+    });
+  </script>
+
+</body>
+</html>

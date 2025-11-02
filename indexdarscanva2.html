@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link  rel="icon" href="Untitled-5.png" type="image/png">
+  <title>design academy</title>
+  <style>
+    .keyingi{
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+    }
+
+    .back {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .back span {
+      margin-left: 8px;
+    }
+
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .progress-line {
+      height: 6px;
+      background: #00597b;
+      margin: 0 20px;
+      border-radius: 3px;
+    }
+
+    .lesson-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 20px;
+    }
+     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      text-align: center;
+    }
+
+    /* Video */
+    video {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 1000px;
+      height: 600px;
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    /* Slayder */
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    #mainImage {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    /* Tugmalar */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background:#00597b;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .prev:hover, .next:hover {
+      background: #00597b;
+    }
+
+    .prev { left: -60px; }
+    .next { right: -60px; }
+
+    /* Thumbnail */
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .thumbnails img {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, border 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img:hover {
+      transform: scale(1.1);
+      border: 2px solid #00597b;
+    }
+  </style>
+</head>
+<body>
+<div  class="header">
+    <!-- Chapdagi "Ortga" -->
+    <div  class="back" >
+      &#8592; <a style="text-decoration: none;" href="bosh sahifa.html">Qaytish</a>
+    </div>
+
+    <!-- O'ngdagi statistika -->
+    <div class="stats">
+    </div>
+  </div>
+
+  <!-- Qizil chiziq -->
+  <div class="progress-line"></div>
+
+  <!-- Dars nomi -->
+  <div class="lesson-title">
+    1-dars Canva Dizayn Prinsiplari Ranglar
+  </div>
+  <!-- Video -->
+  <video controls>
+    <source src="vido2canva.mp4" type="video/mp4">
+    Sizning brauzeringiz video qo‘llab-quvvatlamaydi.
+  </video>
+
+  <!-- Slayder -->
+  <div class="slider">
+    <button class="prev">&#10094;</button>
+    <img id="mainImage" src="https://via.placeholder.com/1280x720/000000/ffffff?text=1-RASM" alt="Slayd">
+    <button class="next">&#10095;</button>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnails" id="thumbnailContainer"></div>
+<div class="keyingi">
+    <a href="indexcanvaamaliy2.html">
+        <button style="background-color: #00597b;height: 40px;width: 150px;border: none;color: #fff;border-radius: 10px;transform: translateX(500px);"> 
+            Keyingi
+        </button>
+    </a>
+</div>
+  <script>
+    const images = [
+      "slite canva 1 dars.png",
+      "slite canva 1 dars2.png",
+      "slite canva 1 dars3.png",
+      "slite canva 1 dars4.png.png",
+      "slite canva 1 dars4.png.png",
+      "slite canva 1 dars5.png.png",
+      "slite canva 1 dars6.png.png",
+      "slite canva 1 dars7.png.png",
+      "slite canva 1 dars8.png.png",
+      "slite canva 1 dars9.png.png",
+      "slite canva 1 dars10.png.png",
+      "slite canva 1 dars11.png.png",
+      "slite canva 1 dars12.png.png",
+      "slite canva 1 dars13.png.png",
+      "slite canva 1 dars14.png.png",
+      "slite canva 1 dars15.png.png",
+      "slite canva 1 dars16.png.png",
+      "slite canva 1 dars17.png.png",
+      "slite canva 1 dars18.png.png",
+      "slite canva 1 dars19.png.png",
+      "slite canva 1 dars20.png.png",
+      "slite canva 1 dars21.png.png"
+    ];
+
+    let index = 0;
+    const mainImage = document.getElementById("mainImage");
+    const thumbnailContainer = document.getElementById("thumbnailContainer");
+
+    // Tugmalar
+    document.querySelector(".prev").addEventListener("click", () => {
+      index = (index - 1 + images.length) % images.length;
+      mainImage.src = images[index];
+    });
+
+    document.querySelector(".next").addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      mainImage.src = images[index];
+    });
+
+    // Thumbnails chiqarish
+    images.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.addEventListener("click", () => {
+        index = i;
+        mainImage.src = images[index];
+      });
+      thumbnailContainer.appendChild(img);
+    });
+  </script>
+
+</body>
+</html>

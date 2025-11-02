@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="Untitled-5.png" type="image/png">
+  <title>Design Academy</title>
+  <style>
+    /* Umumiy */
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #f5f6fa;
+      color: #222;
+      text-align: center;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #00597b;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      color: #ff4422;
+    }
+
+    .back span {
+      margin-left: 8px;
+    }
+
+    /* Qizil chiziq */
+    .progress-line {
+      height: 5px;
+      background: linear-gradient(90deg, #ff4422, #ff6a00);
+      margin: 0;
+      border-radius: 3px;
+    }
+
+    /* Video */
+    video {
+      margin-top: 40px;
+      width: 90%;
+      max-width: 950px;
+      height: 520px;
+      background: #000;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    }
+
+    /* Tugma */
+    .keyingi {
+      margin: 50px 0;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #00597b, #007ba7);
+      height: 45px;
+      width: 180px;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #007ba7, #0099cc);
+      transform: scale(1.05);
+    }
+
+    /* Responsive dizayn */
+    @media (max-width: 768px) {
+      video {
+        width: 95%;
+        height: auto;
+      }
+
+      .btn {
+        width: 140px;
+        font-size: 14px;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="back" onclick="window.history.back()">
+      &#8592; <span>Ortga</span>
+    </div>
+    <div class="stats"></div>
+  </div>
+
+  <!-- Chiziq -->
+  <div class="progress-line"></div>
+
+  <!-- Video -->
+  <video controls>
+    <source src="Screen Recording - Sep 17, 2025-VEED.mp4" type="video/mp4">
+    Sizning brauzeringiz video qo‘llab-quvvatlamaydi.
+  </video>
+
+  <!-- Keyingi -->
+  <div class="keyingi">
+    <a href="indexcanvaamaliy1.html">
+      <button class="btn">Keyingi →</button>
+    </a>
+  </div>
+
+</body>
+</html>

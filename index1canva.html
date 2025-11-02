@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Design Academy</title>
+  <link rel="icon" href="Untitled-5.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* === Umumiy sozlamalar === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f7faff, #e1ecf8);
+      color: #111;
+      min-height: 100vh;
+    }
+
+    /* === Navbar === */
+    .navbar {
+      width: 100%;
+      background: #fff;
+      border-bottom: 3px solid #000;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 80px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar img {
+      width: 150px;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #000;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .navbar-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #0077b6;
+      transition: width 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #0077b6;
+    }
+
+    .navbar-links a:hover::after {
+      width: 100%;
+    }
+
+    /* === Asosiy kontent === */
+    .container {
+      max-width: 950px;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .lesson {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 30px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .lesson:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .badge {
+      background-color: #00597b;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .lesson p {
+      flex: 1;
+      margin-left: 15px;
+      font-weight: 500;
+    }
+
+    .lesson img {
+      height: 28px;
+    }
+
+    /* === Responsiv dizayn === */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+      }
+
+      .navbar-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .lesson {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .lesson img {
+        align-self: flex-end;
+      }
+    }
+    .badge2{
+      background-color: #ff0000;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+       .scroll-wrapper {
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px;
+      width: 95%; /* eni uzunroq bo‘lishi uchun */
+      margin: 0 auto;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #d0d0d0;
+      border-radius: 10px;
+    }
+
+    .course-card {
+      flex: 0 0 300px; /* kartaning eni biroz kattaroq */
+      background: #f1f3f9;
+      border-radius: 20px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      color: #212529;
+      text-decoration: none;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .course-info h5 {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .course-info p {
+      margin: 0;
+      font-weight: 500;
+      color: #6c757d;
+    }
+
+    .icon-box {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 20px;
+    }
+
+    .course-img {
+      position: absolute;
+      right: -5px;
+      bottom: -10px;
+      opacity: 0.15;
+      width: 100px;
+      pointer-events: none;
+    }
+
+    .active-course {
+      background: #ff4b00 !important;
+      color: white !important;
+    }
+
+    .active-course p {
+      color: white !important;
+    }
+
+    .active-course .icon-box {
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 45px;
+      height: 45px;
+      font-size: 22px;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .scroll-btn:hover {
+      background: #ff4b00;
+      color: #fff;
+    }
+
+    .scroll-left {
+      left: -10px;
+    }
+
+    .scroll-right {
+      right: -10px;
+    }
+      .exit-buton{
+      border: none;
+      background-color: #ff0000;
+      border-radius: 20px;
+      height: 30px;
+      width: 200px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+    transform: translateY(100px);
+    margin-left:300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- === Navbar === -->
+  <div class="navbar">
+    <img src="Untitled-9.png" alt="logo">
+    <div class="navbar-links">
+      <a href="kurs haqida.html">Kurs haqida</a>
+      <a href="bog'lanish.html">Biz bilan bog‘lanish</a>
+      <a href="https://t.me/ishonchlidizayn">Koordinator bilan bog‘lanish</a>
+      <a href="bog'lanish.html">Telegram guruhga o‘tish</a>
+    </div>
+  </div>
+ <div>
+    <a href="bosh sahifa.html">
+    <button class="exit-buton">< Orqaga qaytish</button>
+    </a>
+  </div>
+  <!-- === Kontent === -->
+  <div class="container">
+ <div class="container scroll-wrapper">
+    <button class="scroll-btn scroll-left" id="scrollLeft">‹</button>
+    <button class="scroll-btn scroll-right" id="scrollRight">›</button>
+
+    <div class="scroll-container" id="scrollContainer">
+      <a href="index1canva.html" class="course-card active-course">
+        <div class="course-info">
+          <h5>Canva</h5>
+          <p>11 ta dars · 11 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://tse1.mm.bing.net/th/id/OIP.6hpx3Mwy5HO85Nf6FvwGBQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="course-img" alt="">
+      </a>
+
+      <a href="indexfigma1.html" class="course-card">
+        <div class="course-info">
+          <h5>Figma</h5>
+          <p>14 ta dars · 15 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://th.bing.com/th/id/R.278148a344a16ac0af0f981deb2a31b7?rik=p3RloBOM7dvvvw&pid=ImgRaw&r=0" class="course-img" alt="">
+      </a>
+
+      <a href="illustrator.html" class="course-card">
+        <div class="course-info">
+          <h5>Magica Voxel</h5>
+          <p>8 ta dars · 14 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://static.macupdate.com/products/63748/m/magicavoxel-logo.png?v=1642057853" class="course-img" alt="">
+      </a>
+
+      <a href="blender.html" class="course-card">
+        <div class="course-info">
+          <h5>Photoshop</h5>
+          <p>11 ta dars · 13 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://logos-world.net/wp-content/uploads/2020/11/Adobe-Photoshop-Logo-2013-2015.png" class="course-img" alt="">
+      </a>
+
+      <a href="canva.html" class="course-card">
+        <div class="course-info">
+          <h5>Illustrator</h5>
+          <p>10 ta dars · 12 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://static.vecteezy.com/system/resources/previews/021/282/248/non_2x/adobe-illustrator-circle-icon-for-web-design-free-png.png" class="course-img" alt="">
+      </a>
+
+      <a href="figma.html" class="course-card">
+        <div class="course-info">
+          <h5>Blender</h5>
+          <p>9 ta dars · 11 ta amaliyot</p>
+        </div>
+        <div class="icon-box">📘</div>
+        <img src="https://logos-world.net/wp-content/uploads/2023/05/Blender-Symbol.png" class="course-img" alt="">
+      </a>
+    </div>
+  </div>
+    <a style="text-decoration: none;" href="indexdarscanva1.html">
+      <div class="lesson">
+        <p style="margin-top: -15px;transform: translateX(-px);">1 Dars</p>
+        <p>Kirish darsi</p>
+        <img src="amaliy rasim.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="indexcanvaamaliy1.html">
+      <div class="lesson">
+        <div class="badge">Ochiq</div>
+        <p>Amaliy ish kirish darsi</p>
+        <img src="amaliy vazifa.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="indexdarscanva2.html">
+      <div class="lesson">
+        <div class="badge">Ochiq</div>
+        <p>Canva dizayn prinsiplari: Ranglar</p>
+        <img src="amaliy rasim.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="indexcanvaamaliy2.html">
+      <div class="lesson">
+        <div class="badge">Ochiq</div>
+        <p>Amaliy vazifa:Canva:dizayn prinsiplari: Ranglar</p>
+        <img src="amaliy vazifa.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="2html.html">
+      <div class="lesson">
+        <div  class="badge2">Yopiq</div>
+        <p>Canva dasturi orqali tashakkurnoma, diplom va sertifikatlarni tayyorlash | 2-dars</p>
+        <img src="amaliy rasim.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="3html.html">
+      <div class="lesson">
+        <div class="badge2">Yopiq</div>
+        <p>Canva dasturi orqali to‘y xat va taklifnomalarni tayyorlash | 3-dars</p>
+        <img src="amaliy rasim.png" alt="">
+      </div>
+    </a>
+    <a style="text-decoration: none;" href="indexcanvaamaliy3.html">
+    <div class="lesson">
+      <div class="badge2">Yopiq</div>
+      <p>Amaliy vazifa</p>
+      <img src="amaliy vazifa.png" alt="">
+    </div>
+    </a>
+
+    <a style="text-decoration: none;" href="finish test.html">
+      <div class="lesson">
+        <div class="badge2">Yopiq</div>
+        <p>HTML Finish</p>
+        <img src="amaliy vazifa.png" alt="">
+      </div>
+    </a>
+
+    <a style="text-decoration: none;" href="demo dayhtml.html">
+      <div class="lesson">
+        <div class="badge2">Yopiq</div>
+        <p>Demo Day</p>
+        <img src="amaliy vazifa.png" alt="">
+      </div>
+    </a>
+
+  </div>
+   <script>
+  const cards = document.querySelectorAll('.course-card');
+
+  // faqat bosilganda qizil bo‘ladi va 0.3 soniyadan keyin o‘tadi
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault(); // darhol sahifaga o'tishni to'xtatamiz
+      cards.forEach(c => c.classList.remove('active-course'));
+      card.classList.add('active-course');
+
+      setTimeout(() => {
+        window.location.href = card.getAttribute('href');
+      }, 300);
+    });
+  });
+
+  // scroll tugmalari
+  const scrollContainer = document.getElementById('scrollContainer');
+  const leftBtn = document.getElementById('scrollLeft');
+  const rightBtn = document.getElementById('scrollRight');
+
+  leftBtn.onclick = () => scrollContainer.scrollLeft -= 300;
+  rightBtn.onclick = () => scrollContainer.scrollLeft += 300;
+
+  // Klaviatura ← → bilan boshqarish
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      scrollContainer.scrollLeft += 300;
+    } else if (e.key === 'ArrowLeft') {
+      scrollContainer.scrollLeft -= 300;
+    }
+  });
+</script>
+
+
+</body>
+</html>
